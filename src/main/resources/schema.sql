@@ -7,6 +7,8 @@ CREATE TABLE question (
     option3 VARCHAR(100),
     option4 VARCHAR(100),
     question_title TEXT,
-    right_answer VARCHAR(100)
+    right_answer VARCHAR(100),
+    version INT DEFAULT 0
 );
+
 

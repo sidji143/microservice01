@@ -10,6 +10,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -24,4 +27,19 @@ public class QuestionController {
 
         return questionService.getAllQuestion();
     }
+
+    @GetMapping("category/{category}")
+   public List<Question> getQuestionByCategory(@PathVariable String category){
+
+    return questionService.getQuestionByCategory(category);
+
+    }
+
+    @PostMapping("addQuestion")
+    public String addQuestion(@RequestBody Question question){
+        System.out.println(question.toString());
+        return questionService.addQuestion(question);
+    }
+        
+    
 }
