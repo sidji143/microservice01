@@ -10,4 +10,5 @@ import com.quiz01.QuestionDao.Question;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
    public List<Question> findByCategory(String category);
+   public String deleteByCategory(String deleteCategory);
 }
