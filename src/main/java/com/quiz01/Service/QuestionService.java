@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.quiz01.QuestionDao.Question;
@@ -17,8 +19,10 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public List<Question> getAllQuestion() {
-        return questionRepository.findAll();
+    public ResponseEntity<List<Question>> getAllQuestion() {
+        // return ResponseEntity<(questionRepository.findAll(), HttpStatus.ACCEPTED)>;
+        List<Question> questions = questionRepository.findAll();
+      return  ResponseEntity.status(HttpStatus.OK).body(questions);
     }
 
     public List<Question> getQuestionByCategory(String category){
@@ -50,8 +54,6 @@ public class QuestionService {
 
             questionRepository.save(exitingQuestion);
         }
-        
-
         return "Record update Successfully";
 
     }

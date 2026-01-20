@@ -9,6 +9,7 @@ import com.quiz01.Service.QuestionService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,7 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping("allQuestions")
-    public List<Question> getAllQuestion(){
-
+    public ResponseEntity<List<Question>> getAllQuestion(){
         return questionService.getAllQuestion();
     }
 
